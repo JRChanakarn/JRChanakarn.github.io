@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Junior</title>
+    <meta name="description" content="Small web apps by Junior: Deskbit, Masu and Mokhwan, plus where to find me." />
+    <meta name="theme-color" content="#e8d5b9" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!-- link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Junior: things I make" />
+    <meta property="og:description" content="Deskbit, Masu and Mokhwan: small web apps by Junior." />
+    <meta property="og:url" content="https://jrchanakarn.github.io/" />
+    <meta property="og:image" content="https://jrchanakarn.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // ?lang=th in the link, or the last choice; English otherwise. Runs before paint so nothing flips.
+      (function () {
+        var asked = new URLSearchParams(location.search).get("lang");
+        var stored = null;
+        try {
+          stored = localStorage.getItem("jr.lang");
+        } catch (e) {
+          // private window: English unless the link asks
+        }
+        var lang = asked || stored;
+        if (lang === "en" || lang === "th") document.documentElement.lang = lang;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --espresso: #2e1f17;
+        --espresso-soft: #4a3527;
+        --ink-soft: #5e4636;
+        --oak: #a86b3c;
+        --oak-dark: #7a4a28;
+        --wall: #e8d5b9;
+        --wall-line: #e3cdaf;
+        --label: #f2e4cf;
+        --sign: #ffd98a;
+        --cream-text: #d9c4a6;
+      }
+      * { box-sizing: border-box; }
+      html[lang="en"] [data-lang="th"],
+      html[lang="th"] [data-lang="en"] { display: none; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: repeating-linear-gradient(90deg, var(--wall) 0 46px, var(--wall-line) 46px 48px);
+        color: var(--espresso);
+        font-family: "IBM Plex Sans Thai", system-ui, sans-serif;
+      }
+      a { color: inherit; }
+      img { display: block; max-width: 100%; }
+      :focus-visible { outline: 3px solid var(--espresso); outline-offset: 4px; }
+
+      main { max-width: 980px; margin: 0 auto; padding: 56px 16px 40px; position: relative; }
+      #lang {
+        position: absolute; top: 20px; right: 16px;
+        font: 600 14px "IBM Plex Sans Thai", sans-serif; color: var(--espresso);
+        padding: 6px 14px; border: 2px solid var(--espresso); border-radius: 4px;
+        background: var(--sign); box-shadow: 3px 3px 0 var(--espresso); cursor: pointer;
+      }
+
+      header { display: flex; gap: 24px; align-items: center; margin: 24px 0 52px; }
+      .avatar { width: 96px; height: 96px; flex: none; border: 4px solid var(--espresso); box-shadow: 6px 6px 0 var(--espresso); object-fit: cover; }
+      h1 { font: 700 clamp(40px, 7vw, 60px) / 1 "Chakra Petch", sans-serif; margin: 0 0 10px; }
+      header p { margin: 0; max-width: 54ch; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
+
+      .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 0 12px; align-items: end; }
+      .plank { height: 22px; background: var(--oak); border-bottom: 8px solid var(--oak-dark); box-shadow: 0 14px 0 rgba(46, 31, 23, 0.12); }
+      .shelf + .plank { margin-bottom: 56px; }
+
+      .cart {
+        display: block; text-decoration: none; background: var(--espresso); color: var(--label);
+        border-radius: 12px 12px 4px 4px; padding: 16px 14px 18px; transition: transform 0.15s;
+      }
+      /* the grip ridges on top of a cartridge */
+      .cart::before { content: ""; display: block; height: 10px; margin: -4px 18px 12px; background: repeating-linear-gradient(90deg, var(--espresso-soft) 0 6px, transparent 6px 10px); }
+      .cart:hover { transform: translateY(-8px); }
+      .label { background: var(--label); padding: 6px; border-radius: 4px; }
+      .label img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+      .label h2 { font: 700 21px "Chakra Petch", sans-serif; color: var(--espresso); margin: 0; padding: 8px 4px 2px; }
+      .cart p { font-size: 15px; line-height: 1.6; margin: 12px 2px; color: var(--cream-text); }
+      .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+      .chip { font-size: 13px; padding: 2px 8px; border-radius: 3px; background: var(--espresso-soft); color: var(--sign); }
+
+      .pins { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 0 12px 18px; }
+      .pin {
+        height: 58px; min-width: 58px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        border-radius: 30px; background: var(--sign); border: 3px solid var(--espresso); box-shadow: 3px 3px 0 var(--espresso);
+        font: 700 16px "Chakra Petch", "IBM Plex Sans Thai", sans-serif; text-decoration: none;
+      }
+      .pin.kofi { padding: 0 20px 0 16px; background: #fff3d6; }
+      .pin:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--espresso); }
+      .icon { width: 24px; height: 24px; flex: none; }
+
+      @media (max-width: 760px) {
+        main { padding-top: 72px; }
+        header { flex-direction: column; align-items: flex-start; margin-top: 0; }
+        .shelf { grid-template-columns: 1fr; gap: 0; padding: 0; }
+        /* one plank under each cartridge instead of a single long shelf */
+        .slot { padding: 0 12px; }
+        .slot::after { content: ""; display: block; height: 18px; margin: 0 -12px 40px; background: var(--oak); border-bottom: 6px solid var(--oak-dark); }
+        .shelf + .plank { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cart { transition: none; }
+        .cart:hover, .pin:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+      <symbol id="i-kofi" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/></g><path fill="currentColor" d="M10.5 15.2 8.3 13a1.4 1.4 0 0 1 2.2-1.7 1.4 1.4 0 0 1 2.2 1.7z"/></symbol>
+    </svg>
+
+    <main>
+      <button id="lang" type="button"><span data-lang="en" lang="th">ภาษาไทย</span><span data-lang="th" lang="en">English</span></button>
+
+      <header>
+        <img class="avatar" src="img/avatar.jpg" alt="" width="96" height="96" />
+        <div>
+          <h1>Junior</h1>
+          <p>
+            <span data-lang="en">I build small web apps: a pixel office for your AI coding sessions, grid puzzle games, and a smoke-plume simulator for open burning.</span>
+            <span data-lang="th">ผมทำเว็บแอปเล็กๆ: ออฟฟิศพิกเซลสำหรับเซสชัน AI ที่ช่วยเขียนโค้ด เกมปริศนาตาราง และตัวจำลองควันจากการเผาในที่โล่ง</span>
+          </p>
+        </div>
+      </header>
+
+      <div class="shelf">
+        <div class="slot">
+          <a class="cart" href="https://jrchanakarn.github.io/deskbit/">
+            <div class="label">
+              <img src="img/deskbit.jpg" style="object-position: 85% 40%" alt="" width="720" height="378" loading="lazy" />
+              <h2>Deskbit</h2>
+            </div>
+            <p>
+              <span data-lang="en">A pixel office for your Claude Code sessions. Every session is a little worker at a desk.</span>
+              <span data-lang="th">ออฟฟิศพิกเซลสำหรับเซสชัน Claude Code ทุกเซสชันคือพนักงานตัวจิ๋วที่นั่งประจำโต๊ะ</span>
+            </p>
+            <div class="chips">
+              <span class="chip"><span data-lang="en">Mac app</span><span data-lang="th">แอป Mac</span></span>
+              <span class="chip"><span data-lang="en">Free</span><span data-lang="th">ฟรี</span></span>
+            </div>
+          </a>
+        </div>
+        <div class="slot">
+          <a class="cart" href="https://masu-plum.vercel.app/">
+            <div class="label">
+              <img src="img/masu.jpg" alt="" width="720" height="450" loading="lazy" />
+              <h2>Masu</h2>
+            </div>
+            <p>
+              <span data-lang="en">Grid puzzles in your browser: Shikaku, Sudoku, Minesweeper and a Thai money game.</span>
+              <span data-lang="th">เกมปริศนาตารางบนเบราว์เซอร์: Shikaku, Sudoku, Minesweeper และเกมแลกเงิน</span>
+            </p>
+            <div class="chips">
+              <span class="chip"><span data-lang="en">Web game</span><span data-lang="th">เกมบนเว็บ</span></span>
+              <span class="chip"><span data-lang="en">Free</span><span data-lang="th">ฟรี</span></span>
+            </div>
+          </a>
+        </div>
+        <div class="slot">
+          <a class="cart" href="https://jrchanakarn.github.io/mokhwan/">
+            <div class="label">
+              <img src="img/mokhwan.jpg" alt="" width="720" height="450" loading="lazy" />
+              <h2>Mokhwan</h2>
+            </div>
+            <p>
+              <span data-lang="en">Draw a field on the map and see where the PM2.5 smoke from burning it drifts, hour by hour.</span>
+              <span data-lang="th">วาดแปลงบนแผนที่ แล้วดูว่าควัน PM2.5 จากการเผาลอยไปทางไหน ทีละชั่วโมง</span>
+            </p>
+            <div class="chips">
+              <span class="chip"><span data-lang="en">Web tool</span><span data-lang="th">เครื่องมือบนเว็บ</span></span>
+              <span class="chip"><span data-lang="en">Open source</span><span data-lang="th">โอเพนซอร์ส</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="plank"></div>
+
+      <nav class="pins" aria-label="Find me">
+        <a class="pin" href="https://github.com/JRChanakarn" aria-label="GitHub" title="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg></a>
+        <a class="pin kofi" href="https://ko-fi.com/jrchanakarn">
+          <svg class="icon" aria-hidden="true"><use href="#i-kofi" /></svg>
+          <span data-lang="en">Buy me a coffee</span><span data-lang="th">เลี้ยงกาแฟผมสักแก้ว</span>
+        </a>
+      </nav>
+      <div class="plank"></div>
+    </main>
+
+    <script>
+      document.getElementById("lang").addEventListener("click", function () {
+        var root = document.documentElement;
+        root.lang = root.lang === "th" ? "en" : "th";
+        try {
+          localStorage.setItem("jr.lang", root.lang);
+        } catch (e) {
+          // not remembered; still switched for this visit
+        }
+      });
+    </script>
+  </body>
+</html>

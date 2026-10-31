@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- a tiny cartridge: espresso shell, grip ridges, cream label -->
+  <path fill="#2e1f17" d="M3 1h10v1h1v13H2V2h1z"/>
+  <path fill="#4a3527" d="M4 2h1v1H4zm2 0h1v1H6zm2 0h1v1H8zm2 0h1v1h-1z"/>
+  <path fill="#f2e4cf" d="M3 4h10v8H3z"/>
+  <path fill="#ffd98a" d="M4 5h8v4H4z"/>
+  <path fill="#a86b3c" d="M4 10h5v1H4z"/>
+</svg>
