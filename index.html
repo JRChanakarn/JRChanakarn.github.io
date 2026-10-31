@@ -74,12 +74,14 @@
       h1 { font: 700 clamp(40px, 7vw, 60px) / 1 "Chakra Petch", sans-serif; margin: 0 0 10px; }
       header p { margin: 0; max-width: 54ch; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
 
-      .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 0 12px; align-items: end; }
+      /* every cartridge as tall as the tallest, so they stand level on the shelf */
+      .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 0 12px; }
+      .slot { display: flex; flex-direction: column; }
       .plank { height: 22px; background: var(--oak); border-bottom: 8px solid var(--oak-dark); box-shadow: 0 14px 0 rgba(46, 31, 23, 0.12); }
       .shelf + .plank { margin-bottom: 56px; }
 
       .cart {
-        display: block; text-decoration: none; background: var(--espresso); color: var(--label);
+        flex: 1; display: flex; flex-direction: column; text-decoration: none; background: var(--espresso); color: var(--label);
         border-radius: 12px 12px 4px 4px; padding: 16px 14px 18px; transition: transform 0.15s;
       }
       /* the grip ridges on top of a cartridge */
@@ -89,7 +91,7 @@
       .label img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
       .label h2 { font: 700 21px "Chakra Petch", sans-serif; color: var(--espresso); margin: 0; padding: 8px 4px 2px; }
       .cart p { font-size: 15px; line-height: 1.6; margin: 12px 2px; color: var(--cream-text); }
-      .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+      .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
       .chip { font-size: 13px; padding: 2px 8px; border-radius: 3px; background: var(--espresso-soft); color: var(--sign); }
 
       .pins { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 0 12px 18px; }
