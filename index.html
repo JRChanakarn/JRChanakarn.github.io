@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Junior</title>
-    <meta name="description" content="Small web apps by Junior: Deskbit, Masu and Mokhwan, plus where to find me." />
+    <meta name="description" content="Small apps by Junior: Deskbit, Portbit, Masu and Mokhwan, plus where to find me." />
     <meta name="theme-color" content="#e8d5b9" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <!-- link previews -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Junior: things I make" />
-    <meta property="og:description" content="Deskbit, Masu and Mokhwan: small web apps by Junior." />
+    <meta property="og:description" content="Deskbit, Portbit, Masu and Mokhwan: small apps by Junior." />
     <meta property="og:url" content="https://jrchanakarn.github.io/" />
     <meta property="og:image" content="https://jrchanakarn.github.io/og.png" />
     <meta property="og:image:width" content="1200" />
@@ -75,7 +75,7 @@
       header p { margin: 0; max-width: 54ch; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
 
       /* every cartridge as tall as the tallest, so they stand level on the shelf */
-      .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 0 12px; }
+      .shelf { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; padding: 0 12px; }
       .slot { display: flex; flex-direction: column; }
       .plank { height: 22px; background: var(--oak); border-bottom: 8px solid var(--oak-dark); box-shadow: 0 14px 0 rgba(46, 31, 23, 0.12); }
       .shelf + .plank { margin-bottom: 56px; }
@@ -104,6 +104,12 @@
       .pin:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--espresso); }
       .icon { width: 24px; height: 24px; flex: none; }
 
+      /* tablets: two cartridges per shelf, a plank under each pair */
+      @media (min-width: 761px) and (max-width: 940px) {
+        .shelf { grid-template-columns: repeat(2, 1fr); gap: 0 28px; }
+        .slot::after { content: ""; display: block; height: 18px; margin: 0 -14px 40px; background: var(--oak); border-bottom: 6px solid var(--oak-dark); }
+        .shelf + .plank { display: none; }
+      }
       @media (max-width: 760px) {
         main { padding-top: 72px; }
         header { flex-direction: column; align-items: flex-start; margin-top: 0; }
@@ -133,8 +139,8 @@
         <div>
           <h1>Junior</h1>
           <p>
-            <span data-lang="en">I build small web apps: a pixel office for your AI coding sessions, grid puzzle games, and a smoke-plume simulator for open burning.</span>
-            <span data-lang="th">ผมทำเว็บแอปเล็กๆ: ออฟฟิศพิกเซลสำหรับเซสชัน AI ที่ช่วยเขียนโค้ด เกมปริศนาตาราง และตัวจำลองควันจากการเผาในที่โล่ง</span>
+            <span data-lang="en">I build small apps: a pixel office for your AI coding sessions, a menu bar app for your dev servers, grid puzzle games, and a smoke-plume simulator for open burning.</span>
+            <span data-lang="th">ผมทำแอปเล็กๆ: ออฟฟิศพิกเซลสำหรับเซสชัน AI ที่ช่วยเขียนโค้ด แอปดู dev server บน menu bar เกมปริศนาตาราง และตัวจำลองควันจากการเผาในที่โล่ง</span>
           </p>
         </div>
       </header>
@@ -149,6 +155,22 @@
             <p>
               <span data-lang="en">A pixel office for your Claude Code sessions. Every session is a little worker at a desk.</span>
               <span data-lang="th">ออฟฟิศพิกเซลสำหรับเซสชัน Claude Code ทุกเซสชันคือพนักงานตัวจิ๋วที่นั่งประจำโต๊ะ</span>
+            </p>
+            <div class="chips">
+              <span class="chip"><span data-lang="en">Mac app</span><span data-lang="th">แอป Mac</span></span>
+              <span class="chip"><span data-lang="en">Free</span><span data-lang="th">ฟรี</span></span>
+            </div>
+          </a>
+        </div>
+        <div class="slot">
+          <a class="cart" href="https://jrchanakarn.github.io/portbit/">
+            <div class="label">
+              <img src="img/portbit.jpg" alt="" width="720" height="540" loading="lazy" />
+              <h2>Portbit</h2>
+            </div>
+            <p>
+              <span data-lang="en">See every dev server running on your Mac from the menu bar, who started it, and stop it in one click.</span>
+              <span data-lang="th">ดู dev server ทุกตัวที่เปิดอยู่ในเครื่องจาก menu bar รู้ว่าใครเปิด และสั่งปิดได้ในคลิกเดียว</span>
             </p>
             <div class="chips">
               <span class="chip"><span data-lang="en">Mac app</span><span data-lang="th">แอป Mac</span></span>
