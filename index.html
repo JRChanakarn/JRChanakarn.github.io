@@ -195,7 +195,7 @@
           </a>
         </div>
         <div class="slot">
-          <a class="cart" href="https://jrchanakarn.github.io/mokhwan/">
+          <a class="cart" href="https://jrchanakarn.github.io/mokhwan/" data-lang-href>
             <div class="label">
               <img src="img/mokhwan.jpg" alt="" width="720" height="450" loading="lazy" />
               <h2>Mokhwan</h2>
@@ -207,7 +207,6 @@
             <div class="chips">
               <span class="chip"><span data-lang="en">Web tool</span><span data-lang="th">เครื่องมือบนเว็บ</span></span>
               <span class="chip"><span data-lang="en">Open source</span><span data-lang="th">โอเพนซอร์ส</span></span>
-              <span class="chip" data-lang="en">Thai only</span>
             </div>
           </a>
         </div>
@@ -225,6 +224,16 @@
     </main>
 
     <script>
+      // Mokhwan opens in Thai unless the link asks, so its card passes the hub's language along
+      function syncLangLinks() {
+        var lang = document.documentElement.lang === "th" ? "th" : "en";
+        document.querySelectorAll("a[data-lang-href]").forEach(function (a) {
+          var url = new URL(a.href);
+          url.searchParams.set("lang", lang);
+          a.href = url.toString();
+        });
+      }
+      syncLangLinks();
       document.getElementById("lang").addEventListener("click", function () {
         var root = document.documentElement;
         root.lang = root.lang === "th" ? "en" : "th";
@@ -233,6 +242,7 @@
         } catch (e) {
           // not remembered; still switched for this visit
         }
+        syncLangLinks();
       });
     </script>
     <!-- Cloudflare Web Analytics (cookieless) -->
